@@ -1,0 +1,32 @@
+{
+  "id": "csp-contributor-credit-027",
+  "title": "ContributorCredit model + credit-vs-deidentify policy (stable pseudonymous ids, opt-in named credit, DUA-governed)",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "privacy", "governance", "open-data"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "PLAN v0.2 resolves a design contradiction between volunteer attribution and privacy-by-default PII removal: the ContributorCredit model emits a stable pseudonymous non-reversible contributor id so a volunteer's records stay linkable for credit and consensus without exposing identity. A volunteer's real name is emitted only under an explicit opt-in (opt-in-named); otherwise credit is pseudonymous or an aggregate acknowledgment. The partner's DUA governs the credit policy per dataset and the default-on-ambiguity is the more protective option. This is a new M2 exit criterion not covered by any existing task. Depends on csp-privacy-009 and csp-policy-003.",
+  "objective": "Implement the ContributorCredit model (salted non-reversible pseudonymous contributor id; opt-in-named / pseudonymous / aggregate-acknowledgment credit policy configurable per dataset, DUA-governed) in @csp/privacy, and document the credit-vs-deidentify policy so the License+PII reviewer can confirm no identity leak occurs via the credit field.",
+  "acceptanceCriteria": [
+    "ContributorCredit model implemented: salted non-reversible pseudonymous contributor id emitted by default; recordedBy-style field carries the pseudonym, not the observer's real identity",
+    "Credit policy enum (opt-in-named | pseudonymous | aggregate-acknowledgment) configurable per dataset in the pipeline spec; default is pseudonymous",
+    "Real name emitted only under opt-in-named with explicit opt-in recorded in the dataset policy; aggregate-acknowledgment emits no per-record credit field",
+    "Test asserts that a pseudonymous run produces no real-name output even when source data contains observer names",
+    "Credit-vs-deidentify policy documented in docs/policy/ and referenced from the license/PII/sensitivity gate checklist (csp-policy-003 output)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A PR adding ContributorCredit to @csp/privacy, the credit-policy configuration, CI tests, and the credit-vs-deidentify policy document.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

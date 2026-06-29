@@ -1,0 +1,30 @@
+{
+  "id": "csp-ppsr-adapter-025",
+  "title": "PPSR Core adapter + PPSR Core <-> DwC mapping + external conformance CI gate",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["software", "citizen-science", "open-data", "standards", "biodiversity"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "PLAN v0.2 promotes PPSR Core to a first-class standard alongside Darwin Core because the air/water-quality and phenology projects named in the executive summary are not natively Darwin Core — a DwC-only design silently excludes them. The adapter layer must parse PPSR Core (project/dataset/observation models) and provide a PPSR Core <-> DwC bidirectional mapping so biodiversity and non-biodiversity projects share one pipeline. M1 exit criteria also add an external conformance gate: output validated by GBIF data-validator or Frictionless validate rather than self-asserted. Depends on csp-adapter-007.",
+  "objective": "Extend @csp/adapter-* to parse PPSR Core project/dataset/observation records into the canonical model, implement a bidirectional PPSR Core <-> DwC mapping, pack outputs as PPSR Core-conformant, and add a CI gate that validates output against an external authority (GBIF data-validator or Frictionless validate) rather than self-assertion.",
+  "acceptanceCriteria": [
+    "Parses PPSR Core (project, dataset, observation models) into the canonical record model; packs outputs as conformant PPSR Core",
+    "PPSR Core <-> DwC bidirectional mapping implemented and tested; a non-biodiversity dataset (e.g. air-quality or phenology observations) passes through the pipeline without silent field loss",
+    "CI gate validates output conformance against an external authority (GBIF data-validator or Frictionless validate), not by self-assertion alone",
+    "Adapter carries license + provenance metadata through to the packaged output per the agent-neutral-core discipline"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR extending @csp/adapter-* with PPSR Core parse-in/pack-out, the PPSR Core <-> DwC bidirectional mapping, and a CI external-conformance gate.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

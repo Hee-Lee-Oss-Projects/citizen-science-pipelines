@@ -1,0 +1,30 @@
+{
+  "id": "csp-coordinate-cleaner-028",
+  "title": "Adopt CoordinateCleaner/bdc spatial-flag taxonomy as @csp/validate vocabulary and port golden fixtures",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "biodiversity", "data-quality", "open-data"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "PLAN v0.2 explicitly adopts the CoordinateCleaner/bdc validated spatial-flag taxonomy (sea / zero / centroid / capital / institution / urban / outlier, validated against ~91M GBIF records) as the vocabulary for @csp/validate's spatial axis, rather than inventing novel spatial heuristics. The engine orchestrates and standardizes these validated flags. M1 exit criteria require CoordinateCleaner/bdc test cases to be ported as golden fixtures in CI. csp-validate-005 covers general spatial validation but does not mention or adopt this taxonomy, leaving the spatial-flag vocabulary undefined. Depends on csp-validate-005.",
+  "objective": "Extend @csp/validate's spatial validators to use the CoordinateCleaner/bdc flag taxonomy (sea, zero-coordinate, centroid, capital, institution, urban, outlier) as the official flag vocabulary, document the mapping from each flag to its remediation guidance, and port representative CoordinateCleaner/bdc test cases as golden fixtures in CI.",
+  "acceptanceCriteria": [
+    "Spatial ValidationReport flags use the CoordinateCleaner/bdc taxonomy (sea / zero / centroid / capital / institution / urban / outlier) as their vocabulary; no novel spatial flag names invented that duplicate this taxonomy",
+    "Representative CoordinateCleaner/bdc test cases (covering each major flag type) ported as golden fixtures; these pass in CI against the TypeScript implementation",
+    "Documentation explains the provenance and definition of each flag type, referencing CoordinateCleaner/bdc as the source",
+    "Spatial validators remain pure and side-effect-free, conforming to the existing @csp/validate ValidationReport contract"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR extending @csp/validate's spatial validators to use the CoordinateCleaner/bdc flag taxonomy and adding golden fixture tests derived from CoordinateCleaner/bdc test cases.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

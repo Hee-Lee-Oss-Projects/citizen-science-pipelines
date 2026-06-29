@@ -1,0 +1,32 @@
+{
+  "id": "csp-withholding-026",
+  "title": "DwC withholding-terms stamping hard invariant + taxon-as-quasi-identifier (l-diversity) in @csp/privacy",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["software", "citizen-science", "privacy", "biodiversity", "standards"],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "PLAN v0.2 adds two new hard invariants not covered by csp-privacy-009 or csp-privacy-010. First: every generalized record must stamp dwc:dataGeneralizations / dwc:informationWithheld and the TDWG Sensitive Species Extension fields so a generalized record is downstream-distinguishable from a precise one (never silently indistinguishable). Second: for a sensitive taxon the taxon itself is a quasi-identifier of location, so suppression must weigh the species attribute (l-diversity-style), not only the coordinate. The plan adds a Withholding disclosure hard invariant metric (100%) and a new risk row for this gap. The mandatory reviewer gate must confirm 100% of generalized records carry withholding terms. Depends on csp-privacy-009 and csp-privacy-010.",
+  "objective": "Extend @csp/privacy to stamp standard DwC withholding terms (dwc:dataGeneralizations, dwc:informationWithheld, TDWG Sensitive Species Extension) on every generalized record, add a hard invariant test asserting 100% coverage, and implement taxon-as-quasi-identifier (l-diversity-style) suppression so that a sensitive taxon triggers coordinate generalization regardless of coordinate precision.",
+  "acceptanceCriteria": [
+    "Every generalized record in @csp/privacy output carries dwc:dataGeneralizations and dwc:informationWithheld stamped with the fact and method of withholding; TDWG Sensitive Species Extension fields populated where applicable",
+    "Hard invariant test in CI: 100% of generalized records carry withholding terms; CI fails if any generalized record lacks them (zero silent generalizations)",
+    "Taxon-as-quasi-identifier (l-diversity-style) check implemented: a sensitive taxon triggers coordinate generalization even when coordinate precision is within the default threshold",
+    "PrivacyRule schema updated to include withholding subfields (dataGeneralizations, informationWithheld, sensitiveSpeciesExtensionFields) per the v0.2 data model",
+    "No real PII or sensitive-taxa coordinates committed to repo or CI fixtures; sign-off gate artifact references expert review per csp-privacy-010"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A PR extending @csp/privacy with withholding-terms stamping on every generalized record, the hard invariant CI test, and taxon-as-quasi-identifier suppression logic.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}
