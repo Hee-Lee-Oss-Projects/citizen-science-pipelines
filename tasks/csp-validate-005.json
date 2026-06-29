@@ -1,0 +1,30 @@
+{
+  "id": "csp-validate-005",
+  "title": "@csp/validate rule engine (schema/range/enum/temporal/spatial/uniqueness/cross-field) + severities",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["software", "citizen-science", "open-data", "data-quality"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Validation is the heart of turning messy volunteer observations into trustworthy data. @csp/validate provides pure, side-effect-free validators that produce a ValidationReport without ever auto-deleting flagged records, so humans and partners decide. It must cover the standard checks plus emit a before/after error-rate pair for the success metric. Depends on the csp-engine-002 spec/engine.",
+  "objective": "Implement the @csp/validate rule engine covering schema/type, enum, numeric range, regex, temporal, spatial, uniqueness/duplicate, and cross-field checks, emitting a ValidationReport with error/warn/info severities and a before/after error-rate pair.",
+  "acceptanceCriteria": [
+    "Pure, side-effect-free validators emit a ValidationReport (per-record + summary) with error/warn/info severities and never auto-delete flagged records",
+    "Covers schema/type, enum, numeric range, regex, temporal (parseable, not future, in window), spatial (coordinate-in-region, precision), uniqueness/duplicates, and cross-field consistency",
+    "Report records a before/after error-rate pair for the success metric",
+    "Golden-fixture tests (known-valid pass + deliberately malformed fail) pass in CI on synthetic data only"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the @csp/validate package with the rule engine, ValidationReport, severities, and passing golden-fixture tests.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

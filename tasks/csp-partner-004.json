@@ -1,0 +1,30 @@
+{
+  "id": "csp-partner-004",
+  "title": "Partner outreach + secured criteria + fallback dataset selection (runs in parallel)",
+  "project": "citizen-science-pipelines",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["citizen-science", "open-data", "partnerships", "governance"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The project's central honest gap is that no partner citizen-science project is yet secured; until one adopts the toolkit on a real dataset this is infrastructure, not a delivered deed. This long-lead outreach task runs in parallel from M0 and records the objective criteria a partner must meet to be counted as secured. It also selects an openly-licensed public fallback dataset so the loop can be exercised without a partner. No real partner data is processed.",
+  "objective": "Produce an outreach + secured-criteria document that records the objective definition of a secured partner, identifies at least one candidate partner category and opens at least one outreach thread, and selects an openly-licensed public fallback dataset.",
+  "acceptanceCriteria": [
+    "Records the objective secured criteria: signed data-use agreement + named accountable contact + passing acceptance test",
+    "Identifies at least one candidate partner category and opens at least one outreach thread",
+    "Selects an openly-licensed public fallback dataset (e.g. a CC0 GBIF subset) for the no-partner path",
+    "Keeps partner status as TO BE SECURED and verifiedNeed false until all three secured criteria hold"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "docs/partner/outreach-and-secured-criteria.md recording secured criteria, candidate categories, outreach status, and the selected openly-licensed fallback dataset.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

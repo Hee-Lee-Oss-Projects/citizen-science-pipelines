@@ -1,0 +1,30 @@
+{
+  "id": "csp-exec-020",
+  "title": "Python executor for the language-neutral pipeline spec",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["software", "citizen-science", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Much of the citizen-science ecosystem is Python/R, and the pipeline spec is deliberately language-neutral so a second executor can meet users where they live. This future-backlog task adds a Python executor for the same declarative spec, holding the same reproducibility invariant (byte-identical replay) as the TypeScript reference executor. The spec is already neutral, so this is additive.",
+  "objective": "Implement a Python executor for the language-neutral pipeline spec that produces byte-identical output to the reference executor and emits the same run manifest.",
+  "acceptanceCriteria": [
+    "Python executor runs the same declarative PipelineSpec as the TypeScript reference executor",
+    "Double-run byte-identical replay holds; output matches the reference executor for shared fixtures",
+    "Emits the same W3C-PROV-style run manifest format",
+    "Non-deterministic operations forbidden; tool versions pinned and recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding a Python executor for the pipeline spec with cross-executor reproducibility tests.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

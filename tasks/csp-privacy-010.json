@@ -1,0 +1,31 @@
+{
+  "id": "csp-privacy-010",
+  "title": "Sensitive-species generalization rule pack (geo/date coarsening) + conservation-expert sign-off",
+  "project": "citizen-science-pipelines",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["citizen-science", "privacy", "biodiversity", "conservation", "open-data"],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is the project's highest-harm surface: publishing fine-grained sensitive-species coordinates can cause real-world poaching, collection, or disturbance harm. The rule pack resolves taxa against a sensitivity source and generalizes coordinates/dates/locality text, fail-closed. Per the plan this is treated as a high-stakes gate requiring credentialed conservation/data-steward expert sign-off before any partner relies on it; no sensitive-taxa dataset may be processed for reliance until that sign-off is recorded. Depends on csp-privacy-009.",
+  "objective": "Author the sensitive-species generalization rule pack (coordinate-to-grid/centroid, date coarsening, exact-locality suppression) driven by a sensitivity source, fail-closed by default, and obtain and record credentialed conservation/data-steward expert sign-off before it is marked usable.",
+  "acceptanceCriteria": [
+    "Resolves taxa against a sensitivity source (IUCN status / national / partner list, partner overrides) and generalizes coordinates to an agreed grid/centroid + coarsens dates + suppresses exact-locality text",
+    "Default fail-closed: unknown sensitivity yields generalization; generalization is never reversible from the output",
+    "Credentialed conservation/data-steward sign-off is recorded before the rule pack is marked usable; no sensitive-taxa dataset is processed for reliance until then",
+    "Rule pack is versioned and changelogged; any change re-triggers expert sign-off"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "rule-packs/sensitive-species-generalization/ containing the versioned generalization rule pack plus a recorded conservation/data-steward expert sign-off artifact.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

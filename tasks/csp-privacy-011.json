@@ -1,0 +1,30 @@
+{
+  "id": "csp-privacy-011",
+  "title": "PII/sensitivity detection methodology codified as a reviewable gate artifact",
+  "project": "citizen-science-pipelines",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["citizen-science", "privacy", "governance", "open-data"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The PII/sensitivity detection methodology must be repeatable and recorded so the mandatory license/PII/sensitivity reviewer can audit which checks ran and what fired. This codifies the direct-identifier heuristics, the quasi-identifier k>=5 check, the geo-precision threshold, and the sensitivity-list lookup into a committed gate artifact. Depends on csp-privacy-009 and the csp-policy-003 charter.",
+  "objective": "Codify the PII/sensitivity detection methodology (direct-identifier heuristics, k>=5 quasi-identifier check, geo-precision threshold, sensitivity-list lookup) as a committed, reviewable gate artifact whose output records which checks ran and what fired.",
+  "acceptanceCriteria": [
+    "Documents column-name + value heuristics for direct identifiers, the quasi-identifier k>=5 check, the geo-precision threshold (default coarsen beyond ~3 decimal places unless justified), and sensitivity-list lookup by resolved taxon",
+    "Any flag yields suppress/generalize; the methodology output (which checks ran, what fired) is committed per run",
+    "Artifact is structured for the License+PII reviewer to audit and sign off",
+    "Aligns with the fail-closed invariant and the no-PII-in-repo rule"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "docs/policy/pii-sensitivity-detection-methodology.md committed as the reviewable gate artifact.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

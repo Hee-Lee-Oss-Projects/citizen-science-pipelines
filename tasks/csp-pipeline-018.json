@@ -1,0 +1,30 @@
+{
+  "id": "csp-pipeline-018",
+  "title": "First reference pipeline on an openly-licensed sample (validate->report->export), reproducible",
+  "project": "citizen-science-pipelines",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["citizen-science", "open-data", "reproducibility", "data-quality"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This first reference pipeline proves the validation + standards-I/O spine end-to-end on an openly-licensed sample and demonstrates the byte-identical reproducibility invariant on a real run. It uses only an openly-licensed (e.g. CC0) sample; no partner or sensitive data is involved. Processed-data output license follows the source. Depends on csp-validate-005 and csp-adapter-007.",
+  "objective": "Author and run a reference PipelineSpec (validate -> report -> export) on an openly-licensed sample dataset that reproduces byte-identically and emits a before/after error-rate plus a complete provenance manifest.",
+  "acceptanceCriteria": [
+    "Reference pipeline runs validate -> report -> export on an openly-licensed sample end-to-end",
+    "Run reproduces byte-identically on independent replay (double-run verified)",
+    "ValidationReport emits a before/after error-rate pair",
+    "Output is standards-conformant (DwC/Frictionless) and carries a complete provenance manifest; output license follows the source dataset license"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "/output/reference-pipeline-018/ containing the PipelineSpec, the standards-conformant cleaned/validated output, the run manifest, and the before/after error-rate report.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "Follows source dataset license (e.g. CC0/CC-BY); recorded per run"
+}

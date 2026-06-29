@@ -1,0 +1,30 @@
+{
+  "id": "csp-adapter-019",
+  "title": "Second platform adapter (different domain than first)",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["software", "citizen-science", "open-data", "standards"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "A future-backlog task that proves pluggability across the fragmented citizen-science landscape by adding a second @csp/adapter-* in a different domain than the first. It follows the same agent-neutral-core discipline and license/sensitivity gates as the first adapter. Builds on the M3 adapter work.",
+  "objective": "Implement a second @csp/adapter-* for a platform/format in a different domain than the first, with the same license + provenance + sensitivity gates.",
+  "acceptanceCriteria": [
+    "Adapter targets a platform/format in a different domain than the first adapter",
+    "Source license permits reuse + derivatives; no scraping of restricted-terms platforms; license snapshot + provenance recorded",
+    "Sensitive taxa routed through generalization before export; attributions and per-record licenses preserved",
+    "All platform specifics kept in @csp/adapter-*; core stays agent-neutral"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding a second @csp/adapter-* package for a different domain.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

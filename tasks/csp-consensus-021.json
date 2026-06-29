@@ -1,0 +1,30 @@
+{
+  "id": "csp-consensus-021",
+  "title": "Upgrade labeling consensus to Dawid-Skene / EM estimator",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["software", "citizen-science", "open-data", "labeling"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "A future-backlog upgrade to the labeling consensus, moving from weighted-majority (v1) to a Dawid-Skene / EM estimator once annotation volume supports it. It must remain sparsity-aware given citizen-science cold-start conditions and preserve deterministic, provenance-carrying behavior. Builds on csp-label-012.",
+  "objective": "Upgrade the @csp/label consensus from weighted-majority to a sparsity-aware Dawid-Skene / EM estimator, preserving determinism and label provenance.",
+  "acceptanceCriteria": [
+    "Implements a Dawid-Skene / EM consensus estimator that is sparsity-aware for cold-start annotation volume",
+    "Falls back gracefully to weighted-majority when data is too sparse",
+    "Deterministic (seeded) and reproducible; label provenance preserved",
+    "Evaluated against calibration items; tested on synthetic data"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR upgrading @csp/label consensus to a Dawid-Skene / EM estimator.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

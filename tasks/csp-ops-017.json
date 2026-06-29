@@ -1,0 +1,30 @@
+{
+  "id": "csp-ops-017",
+  "title": "Ops/contribution runbook + rule-pack governance + outcome dashboard + maintenance rotation",
+  "project": "citizen-science-pipelines",
+  "type": "maintenance",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["citizen-science", "open-data", "operations", "governance"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Post-delivery sustainability keeps the toolkit healthy and broadens it. This documents the ops/contribution runbook, rule-pack governance (including mandatory re-sign-off for sensitive-species generalization changes), an outcome dashboard tracking beneficiary-facing metrics, and a named maintenance rotation. Depends on csp-handoff-016.",
+  "objective": "Write the ops/contribution runbook, the rule-pack governance process, the outcome-tracking dashboard spec, and establish a named maintenance rotation.",
+  "acceptanceCriteria": [
+    "Runbook covers running a pipeline, adding an adapter, adding/versioning a rule pack, and partner handoff; rule-pack governance requires re-sign-off for any sensitive-species generalization change",
+    "Dashboard tracks pilots delivered/used, datasets cleaned, before/after error reduction, reproducibility-replay pass rate, and privacy-gate status (not stars/downloads)",
+    "Named maintenance rotation in place",
+    "Documents standards-drift handling (DwC/Frictionless/Croissant versions)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "docs/ops/runbook.md plus docs/ops/rule-pack-governance.md and docs/ops/outcome-dashboard.md committed to the repo.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
