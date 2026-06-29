@@ -1,6 +1,6 @@
 # citizen-science-pipelines — TASKS.md
 
-> Status: Draft · Version: 0.1.0 · Last updated: 2026-06-28 · Owner: TBD (maintainer) · Lane: donated
+> Status: Draft · Version: 0.2.0 · Last updated: 2026-06-29 · Owner: TBD (maintainer) · Lane: donated
 
 Backlog for **citizen-science-pipelines** (slug: `citizen-science-pipelines`), an open, reusable,
 reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data.
@@ -53,7 +53,9 @@ Size legend: small ≈ tokenEstimate `small`, med ≈ `medium`, large ≈ `large
   - Engine runs an ordered pipeline with a fixed seed and emits a complete W3C-PROV-style manifest
     (inputs + content hashes, steps + config hashes + tool versions, outputs + hashes).
   - **Double-run replay test:** running the same spec on the same inputs twice yields byte-identical
-    output; CI fails on any diff.
+    output **within a manifest-pinned environment (container digest recorded in the manifest)**; CI
+    fails on any diff. The externally-measured replay metric is **canonical-form-identity** (normalized
+    output + identical change-ledger + identical content hashes) across OS/locale boundaries.
   - Non-deterministic operations (unseeded RNG, wall-clock, locale-dependent sort) are statically
     forbidden / linted.
 - **csp-policy-003** (governance charter)
@@ -65,7 +67,9 @@ Size legend: small ≈ tokenEstimate `small`, med ≈ `medium`, large ≈ `large
   - Provides a reviewable license/PII/sensitivity gate checklist applied to every source.
 - **csp-partner-004** (partner outreach — parallel from M0)
   - Records the objective "secured" criteria: signed DUA + named contact + passing acceptance test.
-  - Identifies ≥ 1 candidate partner *category* and opens ≥ 1 outreach thread.
+  - Identifies ≥ 1 candidate partner *category* and opens ≥ 1 outreach thread; evaluates the
+    low-sensitivity sibling project **`urban-tree-inventory`** (trees: low sensitivity, public benefit,
+    attribution-friendly) as a fast first-pilot to close the loop before tackling sensitive taxa.
   - Selects an openly-licensed public fallback dataset (e.g. a CC0 GBIF subset) for the no-partner path.
 
 **M0 Definition of Done:** monorepo + CI green; spec schemas + deterministic engine merged with the
@@ -80,7 +84,7 @@ thread opened and fallback dataset identified. No real partner data processed ye
 |---|---|---|---|---|---|---|---|
 | csp-validate-005 | `@csp/validate` rule engine (schema/range/enum/temporal/spatial/uniqueness/cross-field) + severities | code | large | low | pr | csp-engine-002 | Maintainer |
 | csp-validate-006 | Taxonomic-name-resolution validator against pinned authoritative backbone | code | medium | medium | pr | csp-validate-005 | Domain reviewer |
-| csp-adapter-007 | Darwin Core + Frictionless Data Package parse-in / pack-out adapter (canonical model) | code | medium | medium | pr | csp-engine-002 | Maintainer |
+| csp-adapter-007 | PPSR Core + Darwin Core + Frictionless Data Package parse-in / pack-out adapter (canonical model + PPSR Core ⇄ DwC mapping) | code | medium | medium | pr | csp-engine-002 | Maintainer |
 | csp-pipeline-018 | First reference pipeline on an openly-licensed sample (validate→report→export), reproducible | data | medium | medium | dataset | csp-validate-005, csp-adapter-007 | Domain reviewer |
 
 **Acceptance criteria — key tasks**
@@ -90,6 +94,9 @@ thread opened and fallback dataset identified. No real partner data processed ye
     `error|warn|info` severities; **never auto-deletes** flagged records.
   - Covers schema/type, enum, numeric range, regex, temporal (parseable, not future, in window),
     spatial (coordinate-in-region, precision), uniqueness/duplicates, and cross-field consistency.
+    The spatial validators **adopt the CoordinateCleaner/bdc flag taxonomy** (sea/zero/centroid/
+    capital/institution/urban/outlier) as the vocabulary, porting their cases as golden fixtures,
+    rather than reinventing spatial heuristics.
   - Report records a before/after error-rate pair for the success metric.
   - Golden-fixture tests (known-valid pass + deliberately malformed fail) pass in CI on synthetic data.
 - **csp-validate-006** (taxonomic validation)
@@ -97,10 +104,14 @@ thread opened and fallback dataset identified. No real partner data processed ye
     Catalogue of Life); the version is recorded in the run manifest for reproducibility.
   - Flags unmatched/ambiguous/synonym names as `warn`/`error` with the matched concept; never
     silently rewrites a name without recording it in the change-ledger.
-- **csp-adapter-007** (DwC + Frictionless I/O)
-  - Parses Darwin Core (and DwC-Archive) and Frictionless Data Package into the canonical record
-    model; packs outputs back as conformant DwC-Archive / Frictionless Data Package.
-  - Output conformance validated in CI; license + provenance carried through to the packaged output.
+- **csp-adapter-007** (PPSR Core + DwC + Frictionless I/O)
+  - Parses **PPSR Core**, Darwin Core (and DwC-Archive), and Frictionless Data Package into the
+    canonical record model; packs outputs back as conformant PPSR Core / DwC-Archive / Frictionless
+    Data Package; carries a **PPSR Core ⇄ DwC mapping** so non-biodiversity (air/water/phenology)
+    projects share one pipeline.
+  - Output conformance validated in CI **against an external authority** (GBIF data-validator /
+    Frictionless `validate` / PPSR Core check), not self-asserted; license + provenance +
+    withholding terms carried through to the packaged output.
 
 **M1 Definition of Done:** validation engine + taxonomic check + DwC/Frictionless I/O merged with
 golden-fixture + conformance tests green; one reference pipeline runs on an openly-licensed sample
@@ -113,8 +124,8 @@ end-to-end and **reproduces byte-identically**; before/after error-rate emitted.
 | ID | Title | Type | Size | Risk | Deliverable | Depends on | Reviewer |
 |---|---|---|---|---|---|---|---|
 | csp-clean-008 | `@csp/clean` non-destructive transforms + change-ledger (normalize/dedupe/convert/parse) | code | large | medium | pr | csp-validate-005 | Domain reviewer |
-| csp-privacy-009 | `@csp/privacy` PII detection/removal + k-anonymity + fail-closed invariant | code | large | medium | pr | csp-engine-002, csp-policy-003 | License+PII reviewer |
-| csp-privacy-010 | Sensitive-species generalization rule pack (geo/date coarsening) + conservation-expert sign-off | data | medium | high | dataset | csp-privacy-009 | Conservation expert reviewer |
+| csp-privacy-009 | `@csp/privacy` PII detection/removal + k-anonymity + l-diversity (taxon-as-QI) + `ContributorCredit` (credit-vs-deidentify) + fail-closed invariant | code | large | medium | pr | csp-engine-002, csp-policy-003 | License+PII reviewer |
+| csp-privacy-010 | Sensitive-species generalization rule pack (geo/date coarsening) emitting `dwc:dataGeneralizations` / `informationWithheld` + Sensitive Species Extension + conservation-expert sign-off | data | medium | high | dataset | csp-privacy-009 | Conservation expert reviewer |
 | csp-privacy-011 | PII/sensitivity detection methodology codified as a reviewable gate artifact | writing | small | medium | document | csp-privacy-009, csp-policy-003 | License+PII reviewer |
 
 **Acceptance criteria — key tasks**
@@ -127,7 +138,12 @@ end-to-end and **reproduces byte-identically**; before/after error-rate emitted.
   - Deterministic: same input + spec ⇒ byte-identical cleaned output + ledger.
 - **csp-privacy-009** (PII module, fail-closed)
   - Detects + removes/pseudonymizes living-individual PII (names, emails, usernames, precise home
-    coords, device IDs); runs a quasi-identifier **k ≥ 5** check.
+    coords, device IDs); runs a quasi-identifier **k ≥ 5** check **plus an l-diversity-style check
+    for taxon-as-quasi-identifier** (a rare taxon leaks location regardless of coordinate precision).
+  - Implements the **`ContributorCredit`** model resolving the de-identify ⊕ attribute tension: a
+    stable pseudonymous, non-reversible contributor id by default; opt-in named credit; aggregate
+    acknowledgment — credit policy governed per dataset by the partner DUA, default-on-ambiguity
+    pseudonymous. Volunteer attribution survives the pipeline with no living-individual PII emitted.
   - **Fail-closed invariant test:** no output contains a denylisted PII field, and no coordinate
     finer than its record's permitted precision; on detection uncertainty the pipeline coarsens to
     the coarsest configured level or halts.
@@ -135,6 +151,9 @@ end-to-end and **reproduces byte-identically**; before/after error-rate emitted.
   - Resolves taxa against a sensitivity source (IUCN status / national / partner list, partner
     overrides) and generalizes coordinates to an agreed grid/centroid + coarsens dates + suppresses
     exact-locality text.
+  - **Stamps standard withholding terms** on every generalized output record (`dwc:dataGeneralizations`
+    / `dwc:informationWithheld` + TDWG Sensitive Species Extension fields) so a generalized record is
+    downstream-distinguishable from a precise one (invariant: 100% of generalized records carry them).
   - Default fail-closed: unknown sensitivity ⇒ generalize. Generalization is never reversible from
     the output.
   - **Credentialed conservation/data-steward sign-off recorded** before the rule pack is marked
@@ -163,8 +182,11 @@ artifact. The privacy surface is complete **before** any real platform adapter (
   - Sensitive taxa in the source are routed through `csp-privacy-010` generalization before any export.
   - ODbL/CC-BY/NC attributions and per-record licenses are preserved through the pipeline.
 - **csp-pipeline-014** (full end-to-end, reproducible)
-  - Runs the full step chain on a real openly-licensed dataset and **reproduces byte-identically**.
-  - Output is standards-conformant (DwC/Frictionless), carries a complete provenance manifest, and
+  - Runs the full step chain on a real openly-licensed dataset and **reproduces byte-identically in
+    the pinned environment** (canonical-form-identity across environments).
+  - Output is standards-conformant (PPSR Core/DwC/Frictionless, validated against an external
+    authority), carries a complete provenance manifest, stamps withholding terms on generalized
+    records, ships an **auto-generated per-run datasheet (Croissant-RAI / Datasheets-aligned)**, and
     passes the privacy/sensitivity invariant tests. Not yet partner-accepted.
 
 **M3 Definition of Done:** labeling/consensus + one real adapter merged; full validate→clean→
@@ -231,6 +253,9 @@ governance documented, and a rotation owning it after the first delivery.
 | csp-croissant-022 | Croissant ML metadata + Datasheet emitter for cleaned outputs | code | medium | low | pr | Documentation-completeness metric; reuse with open-data-datasheets |
 | csp-i18n-023 | Internationalized rule-pack messages + docs | writing | medium | low | translation | Lower barrier for non-English-speaking projects |
 | csp-edu-024 | "How this data was cleaned" reproducibility explainer for the public | writing | small | low | document | Open-science literacy; secondary benefit |
+| csp-fair-025 | Extract standards-out core as a reusable `@fair/*` toolkit (PPSR Core/DwC/Frictionless/Croissant packing + PROV manifest + datasheet) | code | large | low | pr | Domain-neutral asset for any Elyos open-data project |
+| csp-mcp-026 | MCP server exposing `validate` / `map-to-standard` / `generate-datasheet` / `explain-flags` | code | medium | low | pr | Any agent can call the deterministic engine + Claude-assisted mapping; Claude stays out of the execution path |
+| csp-onboard-027 | Claude-assisted "messy-CSV → draft PipelineSpec + DwC/PPSR-Core mapping" onboarding flow (reviewable, never auto-applied) | code | medium | medium | pr | Highest-leverage adoption accelerator; outputs are reviewable declarative data, human-signed-off |
 
 ---
 
