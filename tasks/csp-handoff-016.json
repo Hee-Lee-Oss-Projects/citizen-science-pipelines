@@ -1,0 +1,31 @@
+{
+  "id": "csp-handoff-016",
+  "title": "Toolkit used on partner's real dataset; cleaned/validated/de-identified output accepted and used",
+  "project": "citizen-science-pipelines",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["citizen-science", "open-data", "privacy", "reproducibility", "conservation"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is the closed loop and the actual deed: the toolkit is used on a partner's real dataset and the cleaned/validated/de-identified output is formally accepted and used by the partner, satisfying Definition of Shipped. Reproducibility is independently verified, provenance is published, and conservation-expert sign-off is recorded where sensitive taxa are present. Zero PII or finer-than-permitted sensitive coordinates may appear in the delivered output. Depends on csp-partner-015 and csp-pipeline-014.",
+  "objective": "Use the toolkit on the partner's real dataset and have the cleaned/validated/de-identified output formally accepted and used, with reproducibility independently verified, provenance published, and expert sign-off recorded where sensitive taxa are present.",
+  "acceptanceCriteria": [
+    "The cleaned/validated/de-identified output is formally accepted and used by the partner",
+    "Reproducibility independently verified; provenance published; sensitive-handling expert sign-off recorded where sensitive taxa present; before/after error reduction recorded",
+    "Zero PII / finer-than-permitted sensitive coordinates in the delivered output",
+    "Definition of Shipped met: real project, real dataset, output accepted and used"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "/output/partner-handoff-016/ containing the delivered cleaned/validated/de-identified output, the published provenance manifest, the partner acceptance record, and the recorded expert sign-off where applicable.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "Follows partner source dataset license; recorded per delivery"
+}

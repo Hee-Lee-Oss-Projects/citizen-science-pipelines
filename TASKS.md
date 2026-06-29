@@ -232,6 +232,11 @@ governance documented, and a rotation owning it after the first delivery.
 | csp-i18n-023 | Internationalized rule-pack messages + docs | writing | medium | low | translation | Lower barrier for non-English-speaking projects |
 | csp-edu-024 | "How this data was cleaned" reproducibility explainer for the public | writing | small | low | document | Open-science literacy; secondary benefit |
 
+> **Fan-out note (csp-i18n-023):** the target language set is intentionally *not* enumerated — it
+> depends on partner/community demand, which is `TO BE SECURED`. The task JSON is therefore a single
+> representative task; concrete per-language items expand once a language set is confirmed.
+> Translations stay source-compatible and never relicense copyrighted source.
+
 ---
 
 ## Example task JSON
@@ -275,3 +280,49 @@ Complete, schema-valid Task JSON for the first M0 task (`csp-repo-001`):
   "outputLicense": "MIT"
 }
 ```
+
+---
+
+## Generated task index
+
+Every backlog row above (M0–M5 plus the future backlog) now has a corresponding schema-valid
+`tasks/<id>.json`, validated against `packages/schema/src/schemas.ts`. The full set:
+
+| ID | Milestone | Type | Deliverable | Risk |
+|---|---|---|---|---|
+| csp-repo-001 | M0 | code | pr | low |
+| csp-engine-002 | M0 | code | pr | medium |
+| csp-policy-003 | M0 | writing | document | medium |
+| csp-partner-004 | M0 | research | document | medium |
+| csp-validate-005 | M1 | code | pr | low |
+| csp-validate-006 | M1 | code | pr | medium |
+| csp-adapter-007 | M1 | code | pr | medium |
+| csp-pipeline-018 | M1 | data | dataset | medium |
+| csp-clean-008 | M2 | code | pr | medium |
+| csp-privacy-009 | M2 | code | pr | medium |
+| csp-privacy-010 | M2 | data | dataset | **high** |
+| csp-privacy-011 | M2 | writing | document | medium |
+| csp-label-012 | M3 | code | pr | medium |
+| csp-adapter-013 | M3 | code | pr | medium |
+| csp-pipeline-014 | M3 | data | dataset | medium |
+| csp-partner-015 | M4 | research | document | medium |
+| csp-handoff-016 | M4 | data | dataset | medium |
+| csp-ops-017 | M5 | maintenance | document | low |
+| csp-adapter-019 | backlog | code | pr | medium |
+| csp-exec-020 | backlog | code | pr | medium |
+| csp-consensus-021 | backlog | code | pr | medium |
+| csp-croissant-022 | backlog | code | pr | low |
+| csp-i18n-023 | backlog | writing | translation | low |
+| csp-edu-024 | backlog | document | document | low |
+
+Notes:
+- **All tasks carry `verifiedNeed: false` and `requestor: "TO BE SECURED"`** — no partner is yet
+  secured (per `PLAN.md`); the flag flips only once `csp-partner-015` meets all three secured criteria.
+- **`csp-privacy-010` is the one `high`-risk task** — sensitive-species generalization requires
+  credentialed conservation/data-steward expert sign-off before any reliance (preserved in its
+  `context`/`acceptanceCriteria`).
+- **No fabricated fan-out:** partner, dataset, sensitivity list, taxonomic backbone, and i18n
+  language set are all `TO BE SECURED`/open-ended, so each row is emitted as a single representative
+  task rather than invented per-item JSONs.
+- Output licenses: code `MIT`; specs/rule-packs/docs `CC-BY-4.0`; processed-data outputs follow the
+  source license (recorded per run); translations stay source-compatible.

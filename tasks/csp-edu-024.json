@@ -1,0 +1,30 @@
+{
+  "id": "csp-edu-024",
+  "title": "How this data was cleaned reproducibility explainer for the public",
+  "project": "citizen-science-pipelines",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["citizen-science", "open-data", "open-science", "documentation"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "A future-backlog public-facing explainer supporting open-science literacy: a plain-language How this data was cleaned account that walks the public through the reproducible cleaning process and the provenance record. It is a secondary benefit that makes the transparent, auditable method legible to non-experts. No PII or sensitive coordinates appear in any example.",
+  "objective": "Write a plain-language reproducibility explainer for the public describing how a citizen-science dataset is cleaned, validated, de-identified, and made reproducible, using only synthetic or openly-licensed examples.",
+  "acceptanceCriteria": [
+    "Plain-language explainer covering validation, non-destructive cleaning, de-identification, and reproducibility/provenance",
+    "Uses only synthetic or openly-licensed examples; no PII or sensitive coordinates shown",
+    "Links the explainer to an actual run manifest so a reader can see the reproducible record",
+    "Reviewed for accuracy against the charter and core invariants"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "docs/public/how-this-data-was-cleaned.md committed as the public reproducibility explainer.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

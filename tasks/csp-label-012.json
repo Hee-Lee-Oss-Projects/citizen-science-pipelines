@@ -1,0 +1,30 @@
+{
+  "id": "csp-label-012",
+  "title": "@csp/label assisted labeling + multi-annotator consensus + calibration + label provenance",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "open-data", "labeling"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Human verification is central to citizen-science quality. @csp/label provides assisted labeling and multi-annotator consensus with calibration on known-answer items and full label provenance. For v1 the consensus is weighted-majority (a Dawid-Skene/EM upgrade is deferred to the backlog given cold-start sparsity). Depends on csp-validate-005.",
+  "objective": "Implement @csp/label assisted labeling with multi-annotator consensus (weighted-majority v1), calibration on known-answer items, and recorded label provenance.",
+  "acceptanceCriteria": [
+    "Assisted labeling workflow with multi-annotator consensus (weighted-majority for v1)",
+    "Calibration on known-answer items and recorded per-annotator agreement",
+    "Label provenance recorded for every label (who/what/when/rule)",
+    "Deterministic and tested on synthetic data; pnpm build/test/lint pass"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the @csp/label package with assisted labeling, consensus, calibration, and label provenance.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

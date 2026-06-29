@@ -1,0 +1,30 @@
+{
+  "id": "csp-i18n-023",
+  "title": "Internationalized rule-pack messages + docs",
+  "project": "citizen-science-pipelines",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["citizen-science", "open-data", "i18n", "documentation"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "translation",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "A future-backlog task to lower the barrier for non-English-speaking citizen-science projects by internationalizing rule-pack messages and docs. The target language set is not yet enumerated and depends on partner/community demand, so this is a representative task; concrete per-language items expand once a language set is confirmed. Translations stay source-compatible and never relicense copyrighted source.",
+  "objective": "Internationalize rule-pack messages and core docs, establishing the i18n message catalog and translation workflow for a to-be-confirmed set of languages.",
+  "acceptanceCriteria": [
+    "Rule-pack messages and core docs externalized into an i18n message catalog",
+    "Translation workflow documented; at least one non-English locale provided as a reference",
+    "Translations are source-compatible and preserve technical accuracy (rule semantics unchanged)",
+    "Per-language items expand once a concrete language set is confirmed with partners/community"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the i18n message catalog, translation workflow docs, and at least one reference non-English locale for rule-pack messages and docs.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0 (translations source-compatible; never relicense copyrighted source)"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "csp-clean-008",
+  "title": "@csp/clean non-destructive transforms + change-ledger (normalize/dedupe/convert/parse)",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["software", "citizen-science", "open-data", "data-quality"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Cleaning must be non-destructive and auditable: originals are never silently mutated, and every change is recorded in a reversible change-ledger with the rule that caused it. Crucially, cleaning corrects format/encoding/duplication but never imputes or fabricates scientific observations. Determinism is preserved so cleaned output + ledger are byte-identical on replay. Depends on csp-validate-005.",
+  "objective": "Implement @csp/clean non-destructive transforms (normalize/canonicalize, deduplicate, unit-convert, date-parse) that append a ChangeLedgerEntry for every change, leave the input content hash unchanged, and never impute or fabricate values.",
+  "acceptanceCriteria": [
+    "Every transform appends a ChangeLedgerEntry (recordId, field, before, after, ruleId, reversible); the input artifact's content hash is unchanged after a run (test-enforced)",
+    "Provides normalize/canonicalize, deduplicate, unit-convert, date-parse; never imputes or fabricates values; deduplication records which record was kept and why",
+    "Deterministic: same input + spec yields byte-identical cleaned output + ledger",
+    "pnpm build && pnpm test && pnpm lint pass; changeset added"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the @csp/clean package with non-destructive transforms, the change-ledger, and the input-content-hash-unchanged test.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

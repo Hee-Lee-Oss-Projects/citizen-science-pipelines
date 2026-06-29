@@ -1,0 +1,30 @@
+{
+  "id": "csp-validate-006",
+  "title": "Taxonomic-name-resolution validator against pinned authoritative backbone",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "biodiversity", "taxonomy", "data-quality"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Taxonomic name drift is a primary source of citizen-science data error. This validator resolves taxon names against a pinned, versioned authoritative backbone so the check is reproducible, and it records the backbone version in the run manifest. To respect the non-destructive invariant it never silently rewrites a name. Depends on csp-validate-005.",
+  "objective": "Implement a taxonomic-name-resolution validator that resolves names against a pinned authoritative backbone (e.g. GBIF backbone / Catalogue of Life), flags unmatched/ambiguous/synonym names with severities, and records the backbone version for reproducibility.",
+  "acceptanceCriteria": [
+    "Resolves taxon names against a pinned, versioned authoritative backbone (e.g. GBIF backbone / Catalogue of Life); the version is recorded in the run manifest for reproducibility",
+    "Flags unmatched/ambiguous/synonym names as warn/error with the matched concept",
+    "Never silently rewrites a name without recording it in the change-ledger",
+    "Domain-reviewer-approved fixtures pass in CI on synthetic data"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the taxonomic-name-resolution validator with pinned-backbone version recording and severity-flagged outputs.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

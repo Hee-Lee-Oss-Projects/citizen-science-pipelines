@@ -1,0 +1,31 @@
+{
+  "id": "csp-policy-003",
+  "title": "License/PII/sensitivity policy + non-destructive & reproducibility charter",
+  "project": "citizen-science-pipelines",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["citizen-science", "open-data", "licensing", "privacy", "governance"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This governance charter locks the project's non-negotiable constraints in writing before any real data is processed. It is the authority the mandatory license/PII/sensitivity reviewer applies to every source and every packaged output. It must encode the accepted-source-license allowlist, the privacy fail-closed stance, per-record license tracking, and the no-PII/sensitive-data-in-repo rule. Depends on csp-repo-001.",
+  "objective": "Write the committed license/PII/sensitivity policy plus the non-destructive and reproducibility charter, including a reviewable gate checklist applied to every source.",
+  "acceptanceCriteria": [
+    "Enumerates accepted source licenses (CC0/CC-BY/PD/open-gov; ODbL with share-alike honored; CC-BY-NC under the NC policy) and exclusions (no clear license; restricted-terms platforms; no scraping)",
+    "States the non-destructive, reproducibility, and privacy fail-closed invariants and the no-PII/sensitive-data-in-repo rule",
+    "Defines the per-record license-tracking and most-restrictive-governs-packaged-output rule",
+    "Provides a reviewable license/PII/sensitivity gate checklist applied to every source and every packaged output"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "docs/policy/license-pii-sensitivity-policy.md plus docs/policy/reproducibility-and-nondestructive-charter.md committed to the repo.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

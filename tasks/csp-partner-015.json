@@ -1,0 +1,30 @@
+{
+  "id": "csp-partner-015",
+  "title": "Secure partner project + data-use agreement + agreed rule packs / generalization defaults",
+  "project": "citizen-science-pipelines",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["citizen-science", "open-data", "partnerships", "governance"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Securing a real partner is the critical-path dependency for delivering an actual good deed rather than infrastructure. A partner counts as secured only with all three of: a signed data-use agreement, a named accountable contact, and a passing acceptance test on a sample cleaned output. Generalization defaults, sensitivity list, and taxonomic backbone are agreed jointly. A no-partner fallback exists but does not meet Definition of Shipped. Depends on csp-partner-004.",
+  "objective": "Secure a partner project by obtaining a signed data-use agreement + named contact + passing acceptance test, and jointly agree and record the generalization defaults, sensitivity list, and taxonomic backbone (or invoke the documented fallback).",
+  "acceptanceCriteria": [
+    "Secured requires all three: signed DUA, a named accountable contact, and a passing acceptance test on a sample cleaned output",
+    "Generalization defaults (grid resolution, date granularity, suppression rules), sensitivity list, and taxonomic backbone are agreed and recorded jointly",
+    "Fallback if no partner: run on a fully openly-licensed public dataset + publish output + manifest + datasheet + commission an independent expert spot-check (does not meet Definition of Shipped)",
+    "verifiedNeed flips to true only once the partner is secured per all three criteria"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "docs/partner/data-use-agreement-and-agreed-defaults.md recording the DUA, named contact, acceptance-test result, and the jointly agreed generalization/sensitivity/backbone defaults.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

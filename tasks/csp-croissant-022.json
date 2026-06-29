@@ -1,0 +1,30 @@
+{
+  "id": "csp-croissant-022",
+  "title": "Croissant ML metadata + Datasheet emitter for cleaned outputs",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["software", "citizen-science", "open-data", "standards", "documentation"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "A future-backlog task supporting the documentation-completeness metric: every delivered dataset should carry a Datasheet/metadata record describing the cleaning applied. This adds a Croissant ML v1.0 metadata + Datasheet emitter for cleaned outputs, reusable with the open-data-datasheets effort. Builds on the export/standards work.",
+  "objective": "Implement a Croissant ML metadata + Datasheet emitter that attaches a standards-conformant metadata record and datasheet describing the cleaning applied to each cleaned output.",
+  "acceptanceCriteria": [
+    "Emits Croissant ML v1.0 metadata for cleaned outputs",
+    "Generates a Datasheet describing the cleaning applied (rules fired, before/after error-rate, provenance)",
+    "Metadata conformance validated in CI",
+    "Designed for reuse with the open-data-datasheets project"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding a Croissant ML metadata + Datasheet emitter for cleaned outputs.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "csp-adapter-007",
+  "title": "Darwin Core + Frictionless Data Package parse-in / pack-out adapter (canonical model)",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "open-data", "standards", "biodiversity"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Standards-conformant I/O is how the toolkit drops into the existing ecosystem (GBIF, Frictionless) rather than building a parallel universe. This adapter parses Darwin Core / DwC-Archive and Frictionless Data Package into the canonical record model and packs outputs back out, carrying license and provenance through. Per the agent-neutral-core rule, all platform/format specifics live in @csp/adapter-*. Depends on csp-engine-002.",
+  "objective": "Implement the Darwin Core (incl. DwC-Archive) and Frictionless Data Package parse-in / pack-out adapter against the canonical record model, with CI-validated output conformance and preserved license + provenance.",
+  "acceptanceCriteria": [
+    "Parses Darwin Core (and DwC-Archive) and Frictionless Data Package into the canonical record model",
+    "Packs outputs back as conformant DwC-Archive / Frictionless Data Package",
+    "Output conformance validated in CI; license + provenance carried through to the packaged output",
+    "All platform/format specifics kept in @csp/adapter-* (core stays agent-neutral)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the @csp/adapter-* package for Darwin Core + Frictionless Data Package parse-in / pack-out with CI conformance checks.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

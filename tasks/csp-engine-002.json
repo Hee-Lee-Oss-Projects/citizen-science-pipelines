@@ -1,0 +1,32 @@
+{
+  "id": "csp-engine-002",
+  "title": "@csp/spec schemas + @csp/engine deterministic runner + run manifest + double-run replay test",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["software", "citizen-science", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "citizen-science-pipelines is an open, reusable, reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data. This task builds the spine: the @csp/spec contract types/JSON Schemas and the deterministic @csp/engine reference executor. Reproducibility is a non-negotiable, test-enforced invariant (same inputs + same spec => byte-identical output), so the engine must forbid non-deterministic operations and emit a complete W3C-PROV-style run manifest. Depends on csp-repo-001 scaffolding.",
+  "objective": "Implement @csp/spec (PipelineSpec, ValidationRule, CleaningTransform, PrivacyRule, ChangeLedgerEntry, ValidationReport, RunManifest as TypeScript types + ajv JSON Schemas) and a deterministic @csp/engine that runs an ordered pipeline with a fixed seed and emits a complete run manifest, with a double-run byte-identical replay test in CI.",
+  "acceptanceCriteria": [
+    "@csp/spec defines and JSON-Schema-validates PipelineSpec, ValidationRule, CleaningTransform, PrivacyRule, ChangeLedgerEntry, ValidationReport, and RunManifest",
+    "Engine runs an ordered pipeline with a fixed seed and emits a complete W3C-PROV-style manifest (inputs + content hashes, steps + config hashes + tool versions, outputs + hashes)",
+    "Double-run replay test: running the same spec on the same inputs twice yields byte-identical output; CI fails on any diff",
+    "Non-deterministic operations (unseeded RNG, wall-clock, locale-dependent sort) are statically forbidden or linted",
+    "pnpm build && pnpm test && pnpm lint pass; changeset added for the user-facing spec/engine packages"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "packages/schema/src/schemas.ts"
+  ],
+  "output": "A PR adding @csp/spec (types + ajv JSON Schemas) and the deterministic @csp/engine with run-manifest emission and a passing double-run byte-identical replay test in CI.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

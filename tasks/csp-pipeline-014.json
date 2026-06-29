@@ -1,0 +1,30 @@
+{
+  "id": "csp-pipeline-014",
+  "title": "End-to-end pipeline (validate->clean->deidentify->label->export) on a real openly-licensed dataset, reproducible",
+  "project": "citizen-science-pipelines",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["citizen-science", "open-data", "reproducibility", "privacy", "data-quality"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This exercises the full step chain (validate -> clean -> deidentify -> label -> export) on a real openly-licensed dataset, proving the privacy and provenance gates and the byte-identical reproducibility invariant together. It is not yet partner-accepted, so it does not satisfy Definition of Shipped. Output license follows the source. Depends on csp-clean-008, csp-privacy-010, csp-label-012, and csp-adapter-013.",
+  "objective": "Run the full validate->clean->deidentify->label->export pipeline on a real openly-licensed dataset so it reproduces byte-identically, emits standards-conformant output + complete provenance, and passes the privacy/sensitivity invariant tests.",
+  "acceptanceCriteria": [
+    "Runs the full step chain on a real openly-licensed dataset and reproduces byte-identically",
+    "Output is standards-conformant (DwC/Frictionless), carries a complete provenance manifest, and passes the privacy/sensitivity invariant tests",
+    "No PII or finer-than-permitted sensitive coordinates in the output",
+    "Marked not yet partner-accepted (does not meet Definition of Shipped); output license follows the source"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "/output/e2e-pipeline-014/ containing the PipelineSpec, the cleaned/validated/de-identified standards-conformant output, the run manifest, and the privacy/provenance gate results.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "Follows source dataset license (e.g. CC0/CC-BY/ODbL); recorded per run"
+}

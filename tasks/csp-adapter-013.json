@@ -1,0 +1,30 @@
+{
+  "id": "csp-adapter-013",
+  "title": "First real @csp/adapter-* against an openly-licensed platform/export (license+sensitivity vetted)",
+  "project": "citizen-science-pipelines",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["software", "citizen-science", "open-data", "standards", "privacy"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is the first adapter against a real openly-licensed platform/export, sequenced after the hardened privacy module (M2) so no real sensitive data flows before generalization exists. The source license must permit reuse + derivatives with no scraping of restricted-terms platforms, and sensitive taxa must be routed through the csp-privacy-010 generalization before any export. Depends on csp-adapter-007 and csp-privacy-010.",
+  "objective": "Implement the first real @csp/adapter-* against an openly-licensed platform/export with license + provenance + sensitivity review signed off, routing sensitive taxa through generalization and preserving per-record licenses/attributions.",
+  "acceptanceCriteria": [
+    "Source license confirmed to permit reuse + derivatives (or licensed-in via partner agreement); no scraping of restricted-terms platforms; license snapshot + provenance recorded",
+    "Sensitive taxa in the source are routed through csp-privacy-010 generalization before any export",
+    "ODbL/CC-BY/NC attributions and per-record licenses are preserved through the pipeline",
+    "License + sensitivity reviewer sign-off recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A PR adding the first real @csp/adapter-* package with recorded license/provenance/sensitivity sign-off.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}
