@@ -99,7 +99,7 @@ sensitive species the taxon, not just the coordinate, leaks location.
 ## 2. Competitive landscape
 
 Two distinct competitor classes: **platforms** (collect + host + minimally clean data) and
-**tooling/standards** (clean/validate/publish). Elyos's project is firmly in the second class, which
+**tooling/standards** (clean/validate/publish). Hee-Lee Oss's project is firmly in the second class, which
 is far less crowded — but the platforms have captured the users.
 
 **Platforms (own the data + the users):**
@@ -117,11 +117,11 @@ is far less crowded — but the platforms have captured the users.
   ([eBird review process](https://support.ebird.org/en/support/solutions/articles/48000795278-the-ebird-review-process),
   [Expert Reviewer Network](https://biss.pensoft.net/article/25394/)).
   *Strength:* best-in-class domain validation. *Weakness:* closed, taxon-specific (birds), restrictive
-  raw-download terms — explicitly the model Elyos can't copy but should learn from (the expert-loop).
+  raw-download terms — explicitly the model Hee-Lee Oss can't copy but should learn from (the expert-loop).
 - **Zooniverse** — general crowd-classification platform with documented **aggregation/consensus**
   tooling (extractors→reducers→consensus, Python CLI) ([aggregation](https://blog.zooniverse.org/2018/10/26/zooniverse-data-aggregation/),
   [classification exports](http://developer.zooniverse.org/en/latest/science/classifications_exports.html)).
-  *Strength:* proven consensus algorithms — directly relevant to Elyos's `@csp/label`.
+  *Strength:* proven consensus algorithms — directly relevant to Hee-Lee Oss's `@csp/label`.
   *Weakness:* tied to Zooniverse's own data model; not a general FAIR-publishing pipeline.
 - **CitSci.org / SciStarter / Anecdata** — project-hosting platforms. CitSci.org co-developed PPSR
   Core ([BISS](https://biss.pensoft.net/article_preview.php?id=75666)). **Anecdata** is notable for
@@ -131,17 +131,17 @@ is far less crowded — but the platforms have captured the users.
 - **GBIF** — the aggregator/standard-setter: Darwin Core, DwC-Archive, the data-validator, data-quality
   flags, and the authoritative **sensitive-species generalization guidance**
   ([GBIF DwC](https://www.gbif.org/darwin-core), [survey-data guide](https://docs.gbif.org/guide-publishing-survey-data/en/)).
-  *Strength:* defines the target format Elyos must conform to. *Weakness:* GBIF cleans on *ingestion*
+  *Strength:* defines the target format Hee-Lee Oss must conform to. *Weakness:* GBIF cleans on *ingestion*
   centrally; it does not give projects a reusable upstream cleaning toolkit — exactly the gap.
 
-**Tooling / standards (Elyos's real arena):**
+**Tooling / standards (Hee-Lee Oss's real arena):**
 
 - **Frictionless Data (Open Knowledge)** — Data Package / Table Schema + `frictionless-py` (describe/
   extract/validate/transform, unified validation report, pipelines)
   ([framework](https://framework.frictionlessdata.io/),
   [datapackage-pipelines](https://github.com/frictionlessdata/datapackage-pipelines)).
   *Strength:* mature, adopted, multi-language (py/R/js), exactly the declarative-spec philosophy
-  Elyos espouses. *Weakness:* generic tabular data — no taxonomic/spatial/conservation-sensitivity
+  Hee-Lee Oss espouses. *Weakness:* generic tabular data — no taxonomic/spatial/conservation-sensitivity
   semantics, no privacy module. **This is both the closest competitor and the best foundation to build
   on rather than reinvent.**
 - **OpenRefine** — the de-facto data-cleaning tool; records a stepwise, exportable-as-JSON,
@@ -149,12 +149,12 @@ is far less crowded — but the platforms have captured the users.
   Wikidata/ROR; has documented GBIF-cleaning workflows via Galaxy training
   ([Galaxy GBIF/OpenRefine tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/openrefine_gbif/tutorial.html),
   [TaPP provenance paper](https://www.usenix.org/conference/tapp2019/presentation/mcphillips)).
-  *Strength:* the operation-history-as-reusable-recipe is *precisely* Elyos's "pipeline spec is the
+  *Strength:* the operation-history-as-reusable-recipe is *precisely* Hee-Lee Oss's "pipeline spec is the
   durable artifact" idea — already shipping. *Weakness:* GUI-centric, single-machine, no
   privacy/sensitivity, recipes are OpenRefine-specific not standard.
 - **CoordinateCleaner / bdc (rOpenSci)** — automated spatial/temporal flagging for biological records
   at GBIF scale ([CoordinateCleaner](https://ropensci.github.io/CoordinateCleaner/),
-  [bdc](https://brunobrr.github.io/bdc/)). *Strength:* the validated flag taxonomy Elyos should adopt.
+  [bdc](https://brunobrr.github.io/bdc/)). *Strength:* the validated flag taxonomy Hee-Lee Oss should adopt.
   *Weakness:* R-only, no spec/provenance/privacy framing.
 - **Galaxy** — reproducible scientific-workflow platform with ecology training incl. data cleaning
   ([Galaxy ecology](https://training.galaxyproject.org/training-material/topics/ecology/)).
@@ -267,10 +267,10 @@ reproducibility invariant (LLM calls are non-deterministic and must never run in
 
 - **Reusable FAIR-publishing toolkit (`@fair/*`)** — extract the standards-out core (DwC/PPSR-Core/
   Frictionless/Croissant packing + PROV manifest + datasheet generation) as a domain-neutral library any
-  Elyos open-data project can depend on. The most valuable reusable asset here.
+  Hee-Lee Oss open-data project can depend on. The most valuable reusable asset here.
 - **An MCP server** — expose `validate`, `map-to-standard`, `generate-datasheet`, and `explain-flags` as
   MCP tools so *any* agent (the donated-lane human's agent included) can call the deterministic engine and
-  Claude-assisted mapping without bespoke integration. Natural fit with Elyos's agent-neutral core.
+  Claude-assisted mapping without bespoke integration. Natural fit with Hee-Lee Oss's agent-neutral core.
 - **`open-data-datasheets`** — the per-run datasheet generator (§6.8) is a shared component; csp produces
   datasheets, that project standardizes/houses them. Direct, immediate tie.
 - **`open-data-explainers`** — Claude-generated plain-language "why was this record flagged / what was
@@ -281,7 +281,7 @@ reproducibility invariant (LLM calls are non-deterministic and must never run in
   attribution-friendly) to de-risk the `TO BE SECURED` partner gap. open-map-gaps shares the ODbL
   share-alike machinery.
 - **Sensitivity rule-pack registry** — the expert-signed generalization rule packs could be a standalone,
-  citable, versioned public good consumed beyond Elyos (a perpendicular contribution to GBIF/TDWG practice).
+  citable, versioned public good consumed beyond Hee-Lee Oss (a perpendicular contribution to GBIF/TDWG practice).
 
 ## 8. Open questions
 

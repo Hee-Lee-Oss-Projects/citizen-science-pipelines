@@ -6,7 +6,7 @@ Citizen-science projects — biodiversity observation networks, community air-qu
 
 **Definition of shipped:** citizen-science project to clean/validate/de-identify a real dataset**, where the output is **accepted and used** by that project, the run is **reproducible** (independent replay verified), provenance is published, and the privacy/sensitivity gate passed with expert sign-off wher
 
-This is an **Elyos** good-deed project. Contributors pull a task, do it with their own coding agent, and open a PR. Platform: https://github.com/jdev1977/elyos
+This is an **Hee-Lee Oss** good-deed project. Contributors pull a task, do it with their own coding agent, and open a PR. Platform: https://github.com/jdev1977/hee-lee-oss
 
 ## Plan
 - [PLAN.md](./PLAN.md) — robust enterprise plan (vision, architecture, roadmap, risks; includes an applied-improvements appendix + review sign-off)
@@ -15,8 +15,8 @@ This is an **Elyos** good-deed project. Contributors pull a task, do it with the
 
 ## Contribute
 ```bash
-elyos browse
-elyos next --repo Elyos-Projects/citizen-science-pipelines --no-fork
+hee-lee-oss browse
+hee-lee-oss next --repo Hee-Lee-Oss-Projects/citizen-science-pipelines --no-fork
 ```
 
 ## Licensing & review

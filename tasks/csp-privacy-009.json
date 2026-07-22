@@ -11,7 +11,7 @@
   "deliverable": "pr",
   "tokenEstimate": "large",
   "status": "open",
-  "context": "Privacy is a first-class, fail-closed module: no living-individual PII ever leaves a pipeline, and when detection is uncertain the pipeline generalizes harder or halts rather than leaking. This package detects and removes/pseudonymizes observer PII and runs a quasi-identifier k>=5 check, enforced by an invariant test on outputs. Per Elyos guardrails, identity-level data is de-identified, never retained. Depends on csp-engine-002 and the csp-policy-003 charter.",
+  "context": "Privacy is a first-class, fail-closed module: no living-individual PII ever leaves a pipeline, and when detection is uncertain the pipeline generalizes harder or halts rather than leaking. This package detects and removes/pseudonymizes observer PII and runs a quasi-identifier k>=5 check, enforced by an invariant test on outputs. Per Hee-Lee Oss guardrails, identity-level data is de-identified, never retained. Depends on csp-engine-002 and the csp-policy-003 charter.",
   "objective": "Implement @csp/privacy PII detection/removal (names, emails, usernames, precise home coordinates, device IDs) with a quasi-identifier k>=5 check and a fail-closed invariant test asserting no denylisted PII field and no finer-than-permitted coordinate appears in any output.",
   "acceptanceCriteria": [
     "Detects and removes/pseudonymizes living-individual PII (names, emails, usernames, precise home coords, device IDs); runs a quasi-identifier k>=5 check",

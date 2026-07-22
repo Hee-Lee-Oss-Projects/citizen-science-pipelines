@@ -193,7 +193,7 @@ each dataset's own recorded intake baseline, never across datasets (they are not
 
 ## Solution approach & architecture
 
-This is a **software toolkit with a strong data-governance core**, mirroring Elyos's
+This is a **software toolkit with a strong data-governance core**, mirroring Hee-Lee Oss's
 agent-neutral-core discipline: vendor/platform specifics live only in `adapters/`.
 
 ### High-level shape
@@ -260,11 +260,11 @@ agent-neutral-core discipline: vendor/platform specifics live only in `adapters/
   non-biodiversity (air/water/phenology) projects from a single spec.
 - **`@csp/cli`** — thin CLI: `run`, `validate`, `reproduce`, `report`. Runs locally or in the
   partner's CI. No network calls except explicit, declared input fetches.
-- **Tooling/deploy** — TypeScript, ESM, pnpm workspaces (Elyos conventions); minimal, permissively
+- **Tooling/deploy** — TypeScript, ESM, pnpm workspaces (Hee-Lee Oss conventions); minimal, permissively
   licensed deps; no runtime service in v1. **Language note (key decision/open question):** much of
   the citizen-science ecosystem is Python (pandas/R). We keep the *pipeline spec language-neutral*
   (declarative JSON/YAML) so the spec is the durable artifact and a Python executor could be added
-  later; the reference executor is TypeScript per Elyos conventions. We provide standards-conformant
+  later; the reference executor is TypeScript per Hee-Lee Oss conventions. We provide standards-conformant
   outputs (DwC, Frictionless) precisely so Python/R users consume results natively.
 
 ### Canonical data model & key records
@@ -354,7 +354,7 @@ implementation time, not guessed.
 ## Competitive landscape & differentiation
 
 Two competitor classes: **platforms** (collect + host + minimally clean data) and **tooling/standards**
-(clean/validate/publish). Elyos is firmly in the second — far less crowded — but the platforms own the
+(clean/validate/publish). Hee-Lee Oss is firmly in the second — far less crowded — but the platforms own the
 users. No incumbent combines a declarative reusable cleaning recipe + biodiversity-grade validation +
 fail-closed sensitive-species generalization + FAIR/PROV provenance + standards-out to DwC **and**
 PPSR Core in one agent-neutral, portable toolkit. That is the white space.
@@ -434,7 +434,7 @@ community-contributed data, so licensing and privacy are front-loaded as hard ga
 **Privacy / PII stance (no living-individual PII; aggregate/generalized only).**
 - **Observer PII** (names, emails, usernames tied to identity, precise home coordinates, device IDs)
   is detected and **removed or pseudonymized** by default; outputs carry no living-individual PII.
-  Consistent with Elyos's guardrail, identity-level data is handled as deceased/aggregate/generalized
+  Consistent with Hee-Lee Oss's guardrail, identity-level data is handled as deceased/aggregate/generalized
   only — we de-identify rather than retain.
 - **Credit vs. de-identify (explicit policy — these are not in conflict).** Volunteer attribution and
   "no living-individual PII" are reconciled by the **`ContributorCredit`** model: by default we emit a
@@ -586,7 +586,7 @@ done); M4 depends on M1–M3 and the parallel partner track.
 ## Work breakdown
 
 The itemized, schema-mapped backlog lives in **`TASKS.md`** — ~18 tasks across M0–M5, each mappable
-to an Elyos Task JSON, with per-milestone task tables (`ID | Title | Type | Size | Risk |
+to a Hee-Lee Oss Task JSON, with per-milestone task tables (`ID | Title | Type | Size | Risk |
 Deliverable | Depends on | Reviewer`), acceptance criteria for the most important tasks, a
 Definition of Done per milestone, a future backlog, and a complete, schema-valid example Task JSON
 for the first M0 task. This section is intentionally just the pointer.
@@ -633,7 +633,7 @@ for the first M0 task. This section is intentionally just the pointer.
   + datasheet openly under the source license, and commission an **independent expert spot-check** of
   the result. This exercises the full loop and delivers a public open-data good, but is explicitly
   weaker than a partner adoption and does **not** by itself satisfy Definition of Shipped.
-- **Elyos pieces:** Task JSON schema (`packages/schema`), the donated-lane CLI workspace/PR flow
+- **Hee-Lee Oss pieces:** Task JSON schema (`packages/schema`), the donated-lane CLI workspace/PR flow
   (`packages/cli`), the good-deed definition + refusal guardrails. No funded-lane/runner dependency
   (this project is donated lane).
 
@@ -672,7 +672,7 @@ for the first M0 task. This section is intentionally just the pointer.
   above the synthetic allowlist.
 - **Secrets handling:** the toolkit needs no credentials by default. If a partner platform token is
   ever required for a declared input fetch, it is supplied by the human operator and **never** written
-  to logs, manifests, receipts, or committed files (per Elyos rule).
+  to logs, manifests, receipts, or committed files (per Hee-Lee Oss rule).
 - **Data integrity & provenance:** content-addressed inputs/outputs; signed/append-only run manifests
   optional for partner handoff; corrections issued as new versioned runs (never silent in-place edits).
 - **Abuse/misuse prevention:** refuse and flag any task that would steer the toolkit toward
@@ -706,7 +706,7 @@ none weaken the v1 scope or guardrails):
 
 - **Reusable FAIR-publishing toolkit (`@fair/*`).** Extract the standards-out core (PPSR Core / DwC /
   Frictionless / Croissant packing + W3C-PROV manifest + datasheet generation) as a **domain-neutral
-  library any Elyos open-data project can depend on** — the most valuable reusable asset here.
+  library any Hee-Lee Oss open-data project can depend on** — the most valuable reusable asset here.
 - **Low-sensitivity first pilot — `urban-tree-inventory`.** A sibling spatial open-data project with
   **low sensitivity, clear public benefit, and attribution-friendly data** is a ready-made pilot to
   **de-risk the `TO BE SECURED` partner gap** and close the loop *before* tackling sensitive taxa
@@ -714,13 +714,13 @@ none weaken the v1 scope or guardrails):
   toolkit already provides). `open-map-gaps` shares the ODbL share-alike machinery.
 - **MCP server.** Expose `validate`, `map-to-standard`, `generate-datasheet`, and `explain-flags` as
   MCP tools so **any** agent (including the donated-lane human's own agent) can call the deterministic
-  engine + Claude-assisted mapping without bespoke integration — a natural fit with Elyos's
+  engine + Claude-assisted mapping without bespoke integration — a natural fit with Hee-Lee Oss's
   agent-neutral core. (Claude stays out of the execution path; the deterministic engine still runs.)
 - **`open-data-datasheets` / `open-data-explainers`.** The per-run datasheet generator and the
   Claude-generated plain-language "why was this record flagged / what was done to this dataset"
   narratives are shared components other projects can house/standardize.
 - **Sensitivity rule-pack registry.** The expert-signed generalization rule packs can be a standalone,
-  citable, versioned public good consumed **beyond Elyos** — a perpendicular contribution to GBIF/TDWG
+  citable, versioned public good consumed **beyond Hee-Lee Oss** — a perpendicular contribution to GBIF/TDWG
   practice.
 - **Portable quality flags as data.** A shared, versioned spatial/temporal flag vocabulary (adopted
   from CoordinateCleaner/bdc) other tools can consume, rather than logic locked in R or closed platforms.
@@ -763,10 +763,10 @@ none weaken the v1 scope or guardrails):
 
 ## References
 
-- Elyos work rules — `C:\code\elyos\CLAUDE.md`
-- Good Deed Definition + risk tiers — `C:\code\elyos\docs\good-deed-definition.md`
-- Task JSON schema — `C:\code\elyos\packages\schema\src\schemas.ts`
-- Portfolio roadmap — `C:\code\elyos\planning\ROADMAP.md`
+- Hee-Lee Oss work rules — `C:\code\hee-lee-oss\CLAUDE.md`
+- Good Deed Definition + risk tiers — `C:\code\hee-lee-oss\docs\good-deed-definition.md`
+- Task JSON schema — `C:\code\hee-lee-oss\packages\schema\src\schemas.ts`
+- Portfolio roadmap — `C:\code\hee-lee-oss\planning\ROADMAP.md`
 - Backlog — `planning/projects/citizen-science-pipelines/TASKS.md`
 - Standards (context, not dependencies to vendor): **PPSR Core** (Association for Advancing
   Participatory Sciences — project/dataset/observation models), Darwin Core / Darwin Core Archive

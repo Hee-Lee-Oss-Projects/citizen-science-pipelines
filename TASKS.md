@@ -6,9 +6,9 @@ Backlog for **citizen-science-pipelines** (slug: `citizen-science-pipelines`), a
 reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data.
 See `PLAN.md` for full context.
 
-## How these tasks map to Elyos
+## How these tasks map to Hee-Lee Oss
 
-Each task below becomes an Elyos **Task JSON** validated against
+Each task below becomes a Hee-Lee Oss **Task JSON** validated against
 `packages/schema/src/schemas.ts`. Field mapping:
 
 - **id** — stable slug `csp-<area>-NNN` (e.g. `csp-engine-002`).
@@ -253,7 +253,7 @@ governance documented, and a rotation owning it after the first delivery.
 | csp-croissant-022 | Croissant ML metadata + Datasheet emitter for cleaned outputs | code | medium | low | pr | Documentation-completeness metric; reuse with open-data-datasheets |
 | csp-i18n-023 | Internationalized rule-pack messages + docs | writing | medium | low | translation | Lower barrier for non-English-speaking projects |
 | csp-edu-024 | "How this data was cleaned" reproducibility explainer for the public | writing | small | low | document | Open-science literacy; secondary benefit |
-| csp-fair-025 | Extract standards-out core as a reusable `@fair/*` toolkit (PPSR Core/DwC/Frictionless/Croissant packing + PROV manifest + datasheet) | code | large | low | pr | Domain-neutral asset for any Elyos open-data project |
+| csp-fair-025 | Extract standards-out core as a reusable `@fair/*` toolkit (PPSR Core/DwC/Frictionless/Croissant packing + PROV manifest + datasheet) | code | large | low | pr | Domain-neutral asset for any Hee-Lee Oss open-data project |
 | csp-mcp-026 | MCP server exposing `validate` / `map-to-standard` / `generate-datasheet` / `explain-flags` | code | medium | low | pr | Any agent can call the deterministic engine + Claude-assisted mapping; Claude stays out of the execution path |
 | csp-onboard-027 | Claude-assisted "messy-CSV → draft PipelineSpec + DwC/PPSR-Core mapping" onboarding flow (reviewable, never auto-applied) | code | medium | medium | pr | Highest-leverage adoption accelerator; outputs are reviewable declarative data, human-signed-off |
 
@@ -282,7 +282,7 @@ Complete, schema-valid Task JSON for the first M0 task (`csp-repo-001`):
   "deliverable": "pr",
   "tokenEstimate": "small",
   "status": "open",
-  "context": "citizen-science-pipelines is an open, reusable, reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data. This is the cold-start foundation task: there is no repo scaffold yet. The codebase must follow Elyos conventions — TypeScript, ESM, pnpm workspaces — with a strict separation between the agent-neutral core (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli) and platform-specific adapters (@csp/adapter-*). No real partner data is processed; no partner is yet secured.",
+  "context": "citizen-science-pipelines is an open, reusable, reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data. This is the cold-start foundation task: there is no repo scaffold yet. The codebase must follow Hee-Lee Oss conventions — TypeScript, ESM, pnpm workspaces — with a strict separation between the agent-neutral core (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli) and platform-specific adapters (@csp/adapter-*). No real partner data is processed; no partner is yet secured.",
   "objective": "Scaffold the pnpm-workspace monorepo with placeholder packages (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli, and an example @csp/adapter-* stub) and a CI pipeline running build, test, and lint, so all later tasks have a green, reproducible baseline.",
   "acceptanceCriteria": [
     "pnpm workspace with packages: @csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli, and an example @csp/adapter-* stub",

@@ -11,7 +11,7 @@
   "deliverable": "pr",
   "tokenEstimate": "small",
   "status": "open",
-  "context": "citizen-science-pipelines is an open, reusable, reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data. This is the cold-start foundation task: there is no repo scaffold yet. The codebase must follow Elyos conventions — TypeScript, ESM, pnpm workspaces — with a strict separation between the agent-neutral core (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli) and platform-specific adapters (@csp/adapter-*). No real partner data is processed; no partner is yet secured.",
+  "context": "citizen-science-pipelines is an open, reusable, reproducible toolkit for cleaning, validating, labeling, and de-identifying citizen-science data. This is the cold-start foundation task: there is no repo scaffold yet. The codebase must follow Hee-Lee Oss conventions — TypeScript, ESM, pnpm workspaces — with a strict separation between the agent-neutral core (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli) and platform-specific adapters (@csp/adapter-*). No real partner data is processed; no partner is yet secured.",
   "objective": "Scaffold the pnpm-workspace monorepo with placeholder packages (@csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli, and an example @csp/adapter-* stub) and a CI pipeline running build, test, and lint, so all later tasks have a green, reproducible baseline.",
   "acceptanceCriteria": [
     "pnpm workspace with packages: @csp/spec, @csp/engine, @csp/validate, @csp/clean, @csp/privacy, @csp/label, @csp/cli, and an example @csp/adapter-* stub",
